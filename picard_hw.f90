@@ -33,7 +33,7 @@ end program picard
 real (kind=8) function g(y)
     real (kind=8) :: y
     real (kind=8) :: alpha, beta, delta 
-    ! looking for root of f(x)=x**3 - x**2 - x - 1
+    ! looking for root of f(y)=y**3 - y**2 - y - 1
      g = y**3 - y**2 - y - 1 + y
 !     g = 0.3333333333333333D0 + 2.0D0**0.3333333333333333D0 /&
 !       ( 3.0D0*(29.0D0 + 27.0D0*y + 3.0D0*Sqrt(3.0D0)*&
