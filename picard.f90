@@ -4,6 +4,7 @@ program picard
     real (kind=8) :: g
     real (kind=8) :: tol
     integer       :: iter
+    integer, parameter :: IMAX = 100
 
     external g
 
@@ -18,13 +19,18 @@ program picard
 
     print *, iter, '  ', x0, '  ', x1
 
-    do while ( abs(x0 - x1) .gt. tol ) 
+    do while ( abs(x0 - x1) .gt. tol .and. iter .lt. IMAX) 
         x0 = x1
         x1 = g(x0)
         iter=iter+1
         print *, iter, '  ', x0, '  ', x1 
+        if ( iter .eq. IMAX) then
+            print *, " -- NO ROOT FOUND IN ", IMAX, " ITERATIONS --"
+            stop
+        endif
     enddo 
 
+    print *, " "
     print *, 'Root found at ', x1, ' with tolerance ', tol
 
 end program picard 
